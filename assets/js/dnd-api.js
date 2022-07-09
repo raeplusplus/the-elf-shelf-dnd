@@ -107,12 +107,10 @@ async function getBackground(){
 
         console.log(data)
 
-        document.getElementById('backgroundName').innerText = data.mm
-        document.getElementById('backgroundFeature').innerText = data.mm
-        document.getElementById('backgroundFeatureDesc').innerText = data.mm
-        document.getElementById('backgroundProf').innerText = data.mm
-        document.getElementById('backgroundLang').innerText = data.mm
-        document.getElementById('backgroundEquipment').innerText = data.mm
+        document.getElementById('backgroundName').innerText = data.name
+        document.getElementById('backgroundFeature').innerText = data.feature.name
+        document.getElementById('backgroundFeatureDesc').innerText = data.feature.desc
+        document.getElementById('backgroundProf').innerText = data.starting_proficiencies //add the forEach
     }catch(error){
         console.log(error)
     }
