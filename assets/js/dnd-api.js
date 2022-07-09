@@ -1,28 +1,122 @@
+const url = `https://www.dnd5eapi.co`
 
-document.querySelector('button').addEventListener('click', getFetch)
+document.getElementById('spellButton').addEventListener('click', getSpells)
 
-function getFetch(){
-    const choice = document.querySelector('input').value 
-    const url = `https://www.dnd5eapi.co`
+async function getSpells(){
+    const spellChoice = document.querySelector('input').value 
+    try{
+        const response = await fetch(`${url}/api/spells/${spellChoice}`)
+        const data = await response.json()
 
-    fetch(`${url}/api/spells/${choice}`)
-        .then(res => res.json())
-        .then(data => {
-            console.log(data.subclasses)
-            data.subclasses.forEach( obj => {
-                //create an li
-            const li = document.createElement('li')
-                //add text to the li
-            li.textContent = obj.name
-                //append the li to the ul
-            document.querySelector('ul').appendChild(li)
-            })
+        console.log(data)
 
-        })
+        document.getElementById('spellName').innerText = data.name
+        document.getElementById('spellDesc').innerText = data.desc
+        // document.getElementById('spellAttackType').innerText = data.mm
+        // document.getElementById('spellRange').innerText = data.mm
+        // document.getElementById('spellCastingTime').innerText = data.mm
+        // document.getElementById('spellSchool').innerText = data.mm
+        // document.getElementById('spellRitual').innerText = data.mm
+        // document.getElementById('spellClasses').innerText = data.mm
+        // document.getElementById('spellSubClasses').innerText = data.subclasses.forEach(obj => {
+        //     const li = document.createElement('li')
+        //     li.textContent = obj.name
+        //     document.querySelector('ul').appendChild(li)
+        // })
+        // document.getElementById('spellConcentration').innerText = data.mm
+        // document.getElementById('spellDamageType').innerText = data.mm
+        // document.getElementById('spellDC').innerText = data.mm
+    }catch(error){
+        console.log(error)
+    }
 }
 
+document.getElementById('monsterButton').addEventListener('click', getMonster)
 
+async function getMonster(){
+    const monsterChoice = document.querySelector('input').value 
+    try{
+        const response = await fetch(`${url}/api/monster/${monsterChoice}`)
+        const data = await response.json()
 
+        console.log(data)
+
+        document.getElementById('monsterName').innerText = data.mm
+        document.getElementById('monsterAlign').innerText = data.mm
+        document.getElementById('monsterSpeed').innerText = data.mm
+        document.getElementById('monsterType').innerText = data.mm
+        document.getElementById('monsterXP').innerText = data.mm
+        document.getElementById('monsterAC').innerText = data.mm
+        document.getElementById('monsterCR').innerText = data.mm
+        document.getElementById('monsterCHA').innerText = data.mm
+        document.getElementById('monsterCON').innerText = data.
+        document.getElementById('monsterDEX').innerText = data.mm
+        document.getElementById('monsterSTR').innerText = data.mm
+        document.getElementById('monsterWIS').innerText = data.mm
+        document.getElementById('monsterINT').innerText = data.mm
+    }catch(error){
+        console.log(error)
+    }
+}
+document.getElementById('raceButton').addEventListener('click', getRace)
+
+async function getRace(){
+    const raceChoice = document.querySelector('input').value 
+    try{
+        const response = await fetch(`${url}/api/race/${raceChoice}`)
+        const data = await response.json()
+
+        console.log(data)
+
+        document.getElementById('raceName').innerText = data.mm
+        document.getElementById('raceAlign').innerText = data.mm
+        document.getElementById('raceAge').innerText = data.mm
+        document.getElementById('raceLang').innerText = data.mm
+        document.getElementById('raceSize').innerText = data.mm
+        document.getElementById('raceSub').innerText = data.mm
+        document.getElementById('raceTrait').innerText = data.mm
+        document.getElementById('raceProf').innerText = data.mm
+    }catch(error){
+        console.log(error)
+    }
+}
+document.getElementById('classButton').addEventListener('click', getClass)
+
+async function getClass(){
+    const classChoice = document.querySelector('input').value 
+    try{
+        const response = await fetch(`${url}/api/class/${classChoice}`)
+        const data = await response.json()
+
+        console.log(data)
+
+        document.getElementById('className').innerText = data.mm
+        document.getElementById('classProf').innerText = data.mm
+        document.getElementById('classSub').innerText = data.mm
+    }catch(error){
+        console.log(error)
+    }
+}
+document.getElementById('backgroundButton').addEventListener('click', getBackground)
+
+async function getBackground(){
+    const backgroundChoice = document.querySelector('input').value 
+    try{
+        const response = await fetch(`${url}/api/background${backgroundChoice}`)
+        const data = await response.json()
+
+        console.log(data)
+
+        document.getElementById('backgroundName').innerText = data.mm
+        document.getElementById('backgroundFeature').innerText = data.mm
+        document.getElementById('backgroundFeatureDesc').innerText = data.mm
+        document.getElementById('backgroundProf').innerText = data.mm
+        document.getElementById('backgroundLang').innerText = data.mm
+        document.getElementById('backgroundEquipment').innerText = data.mm
+    }catch(error){
+        console.log(error)
+    }
+}
 
 
 
