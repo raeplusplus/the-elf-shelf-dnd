@@ -12,20 +12,20 @@ async function getSpells(){
 
         document.getElementById('spellName').innerText = data.name
         document.getElementById('spellDesc').innerText = data.desc
-        // document.getElementById('spellAttackType').innerText = data.mm
-        // document.getElementById('spellRange').innerText = data.mm
-        // document.getElementById('spellCastingTime').innerText = data.mm
-        // document.getElementById('spellSchool').innerText = data.mm
-        // document.getElementById('spellRitual').innerText = data.mm
-        // document.getElementById('spellClasses').innerText = data.mm
-        // document.getElementById('spellSubClasses').innerText = data.subclasses.forEach(obj => {
-        //     const li = document.createElement('li')
-        //     li.textContent = obj.name
-        //     document.querySelector('ul').appendChild(li)
-        // })
-        // document.getElementById('spellConcentration').innerText = data.mm
-        // document.getElementById('spellDamageType').innerText = data.mm
-        // document.getElementById('spellDC').innerText = data.mm
+        document.getElementById('spellAttackType').innerText = data.mm
+        document.getElementById('spellRange').innerText = data.mm
+        document.getElementById('spellCastingTime').innerText = data.mm
+        document.getElementById('spellSchool').innerText = data.mm
+        document.getElementById('spellRitual').innerText = data.mm
+        document.getElementById('spellClasses').innerText = data.mm
+        document.getElementById('spellSubClasses').innerText = data.subclasses.forEach(obj => {
+            const li = document.createElement('li')
+            li.textContent = obj.name
+            document.querySelector('ul').appendChild(li)
+        })
+        document.getElementById('spellConcentration').innerText = data.mm
+        document.getElementById('spellDamageType').innerText = data.mm
+        document.getElementById('spellDC').innerText = data.mm
     }catch(error){
         console.log(error)
     }
