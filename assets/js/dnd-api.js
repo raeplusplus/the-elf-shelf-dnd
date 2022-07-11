@@ -1,31 +1,33 @@
-const url = `https://www.dnd5eapi.co`
-
 document.getElementById('spellButton').addEventListener('click', getSpells)
 
 async function getSpells(){
-    const spellChoice = document.querySelector('input').value 
+    const spellChoice = document.querySelector('input').value.toLowerCase 
     try{
-        const response = await fetch(`${url}/api/spells/${spellChoice}`)
+        const response = await fetch(`https://www.dnd5eapi.co/api/spells/${spellChoice}`)
         const data = await response.json()
 
         console.log(data)
 
-        document.getElementById('spellName').innerText = data.name
+        document.getElementById('spellName').textContent += data.name
         document.getElementById('spellDesc').innerText = data.desc
-        document.getElementById('spellAttackType').innerText = data.mm
-        document.getElementById('spellRange').innerText = data.mm
-        document.getElementById('spellCastingTime').innerText = data.mm
-        document.getElementById('spellSchool').innerText = data.mm
-        document.getElementById('spellRitual').innerText = data.mm
-        document.getElementById('spellClasses').innerText = data.mm
+        document.getElementById('spellAttackType').innerText = data.attack_type
+        document.getElementById('spellRange').innerText = data.range
+        document.getElementById('spellCastingTime').innerText = data.casting_time
+        document.getElementById('spellSchool').innerText = data.school
+        document.getElementById('spellRitual').innerText = data.ritual
+        document.getElementById('spellClasses').innerText = data.classes.forEach(obj => {
+            const li = document.createElement('li')
+            li.textContent = obj.name
+            document.querySelector('ul').appendChild(li)
+        })
         document.getElementById('spellSubClasses').innerText = data.subclasses.forEach(obj => {
             const li = document.createElement('li')
             li.textContent = obj.name
             document.querySelector('ul').appendChild(li)
         })
-        document.getElementById('spellConcentration').innerText = data.mm
-        document.getElementById('spellDamageType').innerText = data.mm
-        document.getElementById('spellDC').innerText = data.mm
+        document.getElementById('spellConcentration').innerText = data.concentration
+        document.getElementById('spellDamageType').innerText = data.damage.damage_type
+        document.getElementById('spellDC').innerText = data.dc
     }catch(error){
         console.log(error)
     }
@@ -36,24 +38,30 @@ document.getElementById('monsterButton').addEventListener('click', getMonster)
 async function getMonster(){
     const monsterChoice = document.querySelector('input').value 
     try{
-        const response = await fetch(`${url}/api/monster/${monsterChoice}`)
+        const response = await fetch(`https://www.dnd5eapi.co/api/monster/${monsterChoice}`)
         const data = await response.json()
 
         console.log(data)
 
-        document.getElementById('monsterName').innerText = data.mm
-        document.getElementById('monsterAlign').innerText = data.mm
-        document.getElementById('monsterSpeed').innerText = data.mm
-        document.getElementById('monsterType').innerText = data.mm
-        document.getElementById('monsterXP').innerText = data.mm
-        document.getElementById('monsterAC').innerText = data.mm
-        document.getElementById('monsterCR').innerText = data.mm
-        document.getElementById('monsterCHA').innerText = data.mm
-        document.getElementById('monsterCON').innerText = data.
-        document.getElementById('monsterDEX').innerText = data.mm
-        document.getElementById('monsterSTR').innerText = data.mm
-        document.getElementById('monsterWIS').innerText = data.mm
-        document.getElementById('monsterINT').innerText = data.mm
+        document.getElementById('monsterName').innerText = data.name
+        document.getElementById('monsterAlign').innerText = data.alignment
+        document.getElementById('monsterSpeed').innerText = data.speed.forEach(obj => {
+            const li = document.createElement('li')
+            li.textContent = obj.name
+            document.querySelector('ul').appendChild(li)
+        })
+        document.getElementById('monsterType').innerText = data.type
+        document.getElementById('monstorHP').innerText = data.hit_points
+        document.getElementById('monsterHitDice').innerText = data.hit_die
+        document.getElementById('monsterXP').innerText = data.xp
+        document.getElementById('monsterAC').innerText = data.armor_class
+        document.getElementById('monsterCR').innerText = data.challenge_rating
+        document.getElementById('monsterCHA').innerText = data.charisma
+        document.getElementById('monsterCON').innerText = data.constitution
+        document.getElementById('monsterDEX').innerText = data.dexterity
+        document.getElementById('monsterSTR').innerText = data.strength
+        document.getElementById('monsterWIS').innerText = data.wisdom
+        document.getElementById('monsterINT').innerText = data.intelligence
     }catch(error){
         console.log(error)
     }
@@ -63,19 +71,27 @@ document.getElementById('raceButton').addEventListener('click', getRace)
 async function getRace(){
     const raceChoice = document.querySelector('input').value 
     try{
-        const response = await fetch(`${url}/api/race/${raceChoice}`)
+        const response = await fetch(`https://www.dnd5eapi.co/api/race/${raceChoice}`)
         const data = await response.json()
 
         console.log(data)
 
-        document.getElementById('raceName').innerText = data.mm
-        document.getElementById('raceAlign').innerText = data.mm
-        document.getElementById('raceAge').innerText = data.mm
-        document.getElementById('raceLang').innerText = data.mm
-        document.getElementById('raceSize').innerText = data.mm
-        document.getElementById('raceSub').innerText = data.mm
-        document.getElementById('raceTrait').innerText = data.mm
-        document.getElementById('raceProf').innerText = data.mm
+        document.getElementById('raceName').innerText = data.name
+        document.getElementById('raceAlign').innerText = data.alignment
+        document.getElementById('raceAge').innerText = data.age
+        document.getElementById('raceLang').innerText = data.language_desc
+        document.getElementById('raceSize').innerText = data.size
+        document.getElementById('raceSub').innerText = data.subraces.forEach(obj => {
+            const li = document.createElement('li')
+            li.textContent = obj.name
+            document.querySelector('ul').appendChild(li)
+        })
+        document.getElementById('raceTrait').innerText = data.traits
+        document.getElementById('raceProf').innerText = data.starting_proficiencies.forEach(obj => {
+            const li = document.createElement('li')
+            li.textContent = obj.name
+            document.querySelector('ul').appendChild(li)
+        })
     }catch(error){
         console.log(error)
     }
@@ -85,14 +101,23 @@ document.getElementById('classButton').addEventListener('click', getClass)
 async function getClass(){
     const classChoice = document.querySelector('input').value 
     try{
-        const response = await fetch(`${url}/api/class/${classChoice}`)
+        const response = await fetch(`https://www.dnd5eapi.co/api/class/${classChoice}`)
         const data = await response.json()
 
         console.log(data)
 
         document.getElementById('className').innerText = data.mm
-        document.getElementById('classProf').innerText = data.mm
-        document.getElementById('classSub').innerText = data.mm
+        document.getElementById('classHitDie').innerText = data.hit_die
+        document.getElementById('classProf').innerText = data.proficiencies.forEach(obj => {
+            const li = document.createElement('li')
+            li.textContent = obj.name
+            document.querySelector('ul').appendChild(li)
+        })
+        document.getElementById('classSub').innerText = data.subclasses.forEach(obj => {
+            const li = document.createElement('li')
+            li.textContent = obj.name
+            document.querySelector('ul').appendChild(li)
+        })
     }catch(error){
         console.log(error)
     }
@@ -102,7 +127,7 @@ document.getElementById('backgroundButton').addEventListener('click', getBackgro
 async function getBackground(){
     const backgroundChoice = document.querySelector('input').value 
     try{
-        const response = await fetch(`${url}/api/background${backgroundChoice}`)
+        const response = await fetch(`https://www.dnd5eapi.co/api/background${backgroundChoice}`)
         const data = await response.json()
 
         console.log(data)
@@ -110,7 +135,11 @@ async function getBackground(){
         document.getElementById('backgroundName').innerText = data.name
         document.getElementById('backgroundFeature').innerText = data.feature.name
         document.getElementById('backgroundFeatureDesc').innerText = data.feature.desc
-        document.getElementById('backgroundProf').innerText = data.starting_proficiencies //add the forEach
+        document.getElementById('backgroundProf').innerText = data.starting_proficiencies.forEach(obj => {
+            const li = document.createElement('li')
+            li.textContent = obj.name
+            document.querySelector('ul').appendChild(li)
+        })
     }catch(error){
         console.log(error)
     }
