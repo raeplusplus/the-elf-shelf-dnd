@@ -9,18 +9,18 @@ async function getSpells(){
         console.log(data)
 
         document.getElementById('spellName').textContent += data.name
-        document.getElementById('spellDesc').innerText = data.desc
-        document.getElementById('spellAttackType').innerText = data.attack_type
-        document.getElementById('spellRange').innerText = data.range
-        document.getElementById('spellCastingTime').innerText = data.casting_time
-        document.getElementById('spellSchool').innerText = data.school
-        document.getElementById('spellRitual').innerText = data.ritual
-        document.getElementById('spellClasses').innerText = data.classes.forEach(obj => {
+        document.getElementById('spellDesc').textContent += data.desc
+        document.getElementById('spellAttackType').textContent += data.attack_type
+        document.getElementById('spellRange').textContent += data.range
+        document.getElementById('spellCastingTime').textContent += data.casting_time
+        document.getElementById('spellSchool').textContent += data.school
+        document.getElementById('spellRitual').textContent += data.ritual
+        document.getElementById('spellClasses').textContent += data.classes.forEach(obj => {
             const li = document.createElement('li')
             li.textContent = obj.name
             document.querySelector('ul').appendChild(li)
         })
-        document.getElementById('spellSubClasses').innerText = data.subclasses.forEach(obj => {
+        document.getElementById('spellSubClasses').textContent += data.subclasses.forEach(obj => {
             const li = document.createElement('li')
             li.textContent = obj.name
             document.querySelector('ul').appendChild(li)
