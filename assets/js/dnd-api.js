@@ -22,12 +22,12 @@ async function getSpells(){
         })
         document.getElementById('spellSubClasses').textContent += data.subclasses.forEach(obj => {
             const li = document.createElement('li')
-            li.textContent = obj.name
+            li.textContent += obj.name
             document.querySelector('ul').appendChild(li)
         })
-        document.getElementById('spellConcentration').innerText = data.concentration
-        document.getElementById('spellDamageType').innerText = data.damage.damage_type
-        document.getElementById('spellDC').innerText = data.dc
+        document.getElementById('spellConcentration').textContent += data.concentration
+        document.getElementById('spellDamageType').textContent += data.damage.damage_type
+        document.getElementById('spellDC').textContent += data.dc
     }catch(error){
         console.log(error)
     }
