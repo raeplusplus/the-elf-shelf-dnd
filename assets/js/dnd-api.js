@@ -1,34 +1,35 @@
 document.getElementById('spellButton').addEventListener('click', getSpells)
 
 function getSpells(){
-    const spellChoice = document.querySelector('input').value 
+    const spellChoice = document.getElementById('spellInput').value.split(" ").join("-") 
     const url = `https://www.dnd5eapi.co/api/spells/${spellChoice}`
 
     fetch(url)
         .then(res => res.json())
         .then(data => {
             
-        console.log(data);
-        document.getElementById('spellName').innerText += data.results[0].name
-        document.getElementById('spellDesc').innerHTML += data.results[0].desc
-        document.getElementById('spellAttackType').textContent += data.results[0].attack_type
-        document.getElementById('spellRange').textContent += data.results[0].range
-        document.getElementById('spellCastingTime').textContent += data.results[0].casting_time
-        document.getElementById('spellSchool').textContent += data.results[0].school
-        document.getElementById('spellRitual').textContent += data.results[0].ritual
-        document.getElementById('spellConcentration').textContent += data.results[0].concentration
-        document.getElementById('spellDamageType').textContent += data.results[0].damage.damage_type
-        document.getElementById('spellDC').textContent += data.results[0].dc
-        document.getElementById('spellClasses').textContent += data.results[0].classes.forEach(obj => {
-            const li = document.createElement('li')
-            li.textContent = obj.name
-            document.querySelector('ul').appendChild(li)
-        })
-        document.getElementById('spellSubClasses').textContent += data.results[0].subclasses.  forEach(obj => {
-            const li = document.createElement('li')
-            li.textContent += obj.name
-            document.querySelector('ul').appendChild(li)
-        })
+            console.log(data);
+        document.getElementById('spellName').innerText += data.name
+        document.getElementById('spellDesc').innerHTML += data.desc
+        // document.getElementById('spellAttackType').textContent += data.attack_type
+        document.getElementById('spellRange').textContent += data.range
+        document.getElementById('spellCastingTime').textContent += data.casting_time
+        // document.getElementById('spellSchool').textContent += data.school
+        document.getElementById('spellRitual').textContent += data.ritual
+        document.getElementById('spellConcentration').textContent += data.concentration
+        // document.getElementById('spellLevel').textContent += data.level
+        // document.getElementById('spellClasses').textContent += data.classes.forEach(obj => {
+        //     const li = document.createElement('li')
+        //     li.textContent = obj.name
+        //     document.querySelector('ul').appendChild(li)
+        // })
+        // document.getElementById('spellSubClasses').textContent += data.subclasses.  forEach(obj => {
+        //     const li = document.createElement('li')
+        //     li.textContent += obj.name
+        //     document.querySelector('ul').appendChild(li)
+        // })
+
+      
         .catch(err => {
             console.log(`error ${err}`)
         })
