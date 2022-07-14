@@ -9,11 +9,11 @@ function getSpells(){
         .then(data => {
             
             console.log(data);
-        document.getElementById('spellName').textContent += data.name
-        document.getElementById('spellDesc').innerText = data.desc
+        document.getElementById('spellName').innerHTML = "<strong>Spell Name:</strong> " + data.name
+        document.getElementById('spellDesc').innerHTML = "<strong>Description: </strong>" + data.desc
         // document.getElementById('spellAttackType').textContent += data.attack_type
-        document.getElementById('spellRange').innerText = data.range
-        document.getElementById('spellCastingTime').innerText = data.casting_time
+        document.getElementById('spellRange').innerHTML = "<strong>Range: </strong>" + data.range
+        document.getElementById('spellCastingTime').innerHTML = "<strong>Casting Time: </strong>" + data.casting_time
         // document.getElementById('spellSchool').textContent += data.school
         // document.getElementById('spellRitual').innerText = data.ritual
         // document.getElementById('spellConcentration').innerText = data.concentration
@@ -48,12 +48,12 @@ function getMonster(){
             .then(data => {
                 console.log(data)
 
-                document.getElementById('monsterName').innerText = data.name
-                document.getElementById('monsterAlign').innerText = data.alignment
+                document.getElementById('monsterName').innerHTML = "<strong>Monster Name: </strong>" + data.name
+                document.getElementById('monsterAlign').innerHTML = "<strong>Alignment: </strong>" + data.alignment
                 // document.getElementById('monsterWalkSpeed').innerText = data.speed.walk
                 // document.getElementById('monsterFlySpeed').innerText = data.speed.fly
                 // document.getElementById('monsterSwimSpeed').innerText = data.speed.swim
-                document.getElementById('monsterType').innerText = data.type
+                document.getElementById('monsterType').innerHTML = "<strong>Type: </strong>" + data.type
                 // document.getElementById('monstorHP').textContent += data.hit_points
                 // document.getElementById('monsterHitDice').innerText += data.hit_die
                 // document.getElementById('monsterXP').innerText += data.xp.toString()
