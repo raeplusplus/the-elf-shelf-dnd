@@ -1,7 +1,7 @@
 document.getElementById('raceButton').addEventListener('click', getRace)
 
 function getRace(){
-    const raceChoice = document.getElementById('raceInput').value.split(" ").join("-")
+    const raceChoice = document.getElementById('raceInput').value.toLowerCase.split(" ").join("-")
     const url = `https://www.dnd5eapi.co/api/races/${raceChoice}`
         
     
@@ -36,7 +36,7 @@ function getRace(){
 document.getElementById('classButton').addEventListener('click', getClass)
 
 function getClass(){
-    const classChoice = document.getElementById('classInput').value.split(" ").join("-")
+    const classChoice = document.getElementById('classInput').value.toLowerCase.split(" ").join("-")
     const url = `https://www.dnd5eapi.co/api/classes/${classChoice}`
     fetch(url)
         .then(res => res.json())
@@ -61,7 +61,7 @@ function getClass(){
 document.getElementById('backgroundButton').addEventListener('click', getBackground)
 
 function getBackground(){
-    const backgroundChoice = document.getElementById('backgroundInput').value 
+    const backgroundChoice = document.getElementById('backgroundInput').value.toLowerCase.split(" ").join("-")
     
         const url = `https://www.dnd5eapi.co/api/backgrounds/${backgroundChoice}`
         
