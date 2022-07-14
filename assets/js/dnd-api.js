@@ -9,8 +9,8 @@ function getSpells(){
         .then(data => {
             
             console.log(data);
-        document.getElementById('spellName').innerText += data.name
-        document.getElementById('spellDesc').innerHTML += data.desc
+        document.getElementById('spellName').textContent += data.name
+        document.getElementById('spellDesc').textContent += data.desc
         // document.getElementById('spellAttackType').textContent += data.attack_type
         document.getElementById('spellRange').textContent += data.range
         document.getElementById('spellCastingTime').textContent += data.casting_time
@@ -30,49 +30,54 @@ function getSpells(){
         // })
 
       
-        .catch(err => {
-            console.log(`error ${err}`)
-        })
+        // .catch(err => {
+        //     console.log(`error ${err}`)
+        // })
         })
 }
 
-// document.getElementById('monsterButton').addEventListener('click', getMonster)
+document.getElementById('monsterButton').addEventListener('click', getMonster)
 
-// async function getMonster(){
-//     const monsterChoice = document.querySelector('input').value 
-//     try{
-//         const response = await fetch(`https://www.dnd5eapi.co/api/monster/${monsterChoice}`)
-//         const data = await response.json()
+function getMonster(){
+    const monsterChoice = document.getElementById('monsterInput').value.split(" ").join("-") 
+    
+    const url = `https://www.dnd5eapi.co/api/monsters/${monsterChoice}`
 
-//         console.log(data)
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
 
-//         document.getElementById('monsterName').innerText = data.name
-//         document.getElementById('monsterAlign').innerText = data.alignment
-//         document.getElementById('monsterSpeed').innerText = data.speed.forEach(obj => {
-//             const li = document.createElement('li')
-//             li.textContent = obj.name
-//             document.querySelector('ul').appendChild(li)
-//         })
-//         document.getElementById('monsterType').innerText = data.type
-//         document.getElementById('monstorHP').innerText = data.hit_points
-//         document.getElementById('monsterHitDice').innerText = data.hit_die
-//         document.getElementById('monsterXP').innerText = data.xp
-//         document.getElementById('monsterAC').innerText = data.armor_class
-//         document.getElementById('monsterCR').innerText = data.challenge_rating
-//         document.getElementById('monsterCHA').innerText = data.charisma
-//         document.getElementById('monsterCON').innerText = data.constitution
-//         document.getElementById('monsterDEX').innerText = data.dexterity
-//         document.getElementById('monsterSTR').innerText = data.strength
-//         document.getElementById('monsterWIS').innerText = data.wisdom
-//         document.getElementById('monsterINT').innerText = data.intelligence
-//     }catch(error){
-//         console.log(error)
-//     }
-// }
-// // document.getElementById('raceButton').addEventListener('click', getRace)
+                document.getElementById('monsterName').textContent += data.name
+                document.getElementById('monsterAlign').textContent += data.alignment
+                document.getElementById('monsterWalkSpeed').textContent += data.speed.walk
+                document.getElementById('monsterFlySpeed').textContent += data.speed.fly
+                document.getElementById('monsterSwimSpeed').textContent += data.speed.swim
+                document.getElementById('monsterType').textContent += data.type
+                // document.getElementById('monstorHP').textContent += data.hit_points
+                // document.getElementById('monsterHitDice').innerText += data.hit_die
+                // document.getElementById('monsterXP').innerText += data.xp.toString()
+                // document.getElementById('monsterAC').innerText += data.armor_class
+                // document.getElementById('monsterCR').innerText += data.challenge_rating
+                // document.getElementById('monsterCHA').innerText += data.charisma
+                // document.getElementById('monsterCON').innerText += data.constitution
+                // document.getElementById('monsterDEX').innerText += data.dexterity
+                // document.getElementById('monsterSTR').innerText += data.strength
+                // document.getElementById('monsterWIS').innerText += data.wisdom
+                // document.getElementById('monsterINT').innerText += data.intelligence
+
+                // .catch(err => {
+                //     console.log(`error ${err}`)
+                // })
+            })
+
+        
+        
+}
+// document.getElementById('raceButton').addEventListener('click', getRace)
 
 // async function getRace(){
-//     const raceChoice = document.querySelector('input').value 
+//     const raceChoice = document.getElementById('raceInput').value 
 //     try{
 //         const response = await fetch(`https://www.dnd5eapi.co/api/race/${raceChoice}`)
 //         const data = await response.json()
