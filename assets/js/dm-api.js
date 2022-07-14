@@ -1,7 +1,7 @@
 document.getElementById('spellButton').addEventListener('click', getSpells)
 
 function getSpells(){
-    const spellChoice = document.getElementById('spellInput').value.toLowerCase.split(" ").join("-") 
+    const spellChoice = document.getElementById('spellInput').value.toLowerCase().split(" ").join("-") 
     const url = `https://www.dnd5eapi.co/api/spells/${spellChoice}`
 
     fetch(url)
@@ -39,7 +39,7 @@ function getSpells(){
 document.getElementById('monsterButton').addEventListener('click', getMonster)
 
 function getMonster(){
-    const monsterChoice = document.getElementById('monsterInput').value.toLowerCase.split(" ").join("-") 
+    const monsterChoice = document.getElementById('monsterInput').value.toLowerCase().split(" ").join("-") 
     
     const url = `https://www.dnd5eapi.co/api/monsters/${monsterChoice}`
 
