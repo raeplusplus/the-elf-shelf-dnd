@@ -3,13 +3,13 @@ document.getElementById('spellButton').addEventListener('click', getSpells)
 function getSpells(){
     const spellChoice = document.getElementById('spellInput').value.toLowerCase().split(" ").join("-") 
     const url = `https://www.dnd5eapi.co/api/spells/${spellChoice}`
-
+    
     fetch(url)
         .then(res => res.json())
         .then(data => {
             
             console.log(data);
-        document.getElementById('spellName').innerText = data.name
+        document.getElementById('spellName').textContent += data.name
         document.getElementById('spellDesc').innerText = data.desc
         // document.getElementById('spellAttackType').textContent += data.attack_type
         document.getElementById('spellRange').innerText = data.range
