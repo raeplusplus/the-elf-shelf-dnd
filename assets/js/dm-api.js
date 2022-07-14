@@ -9,14 +9,14 @@ function getSpells(){
         .then(data => {
             
             console.log(data);
-        document.getElementById('spellName').textContent += data.name
-        document.getElementById('spellDesc').textContent += data.desc
+        document.getElementById('spellName').innerText = data.name
+        document.getElementById('spellDesc').innerText = data.desc
         // document.getElementById('spellAttackType').textContent += data.attack_type
-        document.getElementById('spellRange').textContent += data.range
-        document.getElementById('spellCastingTime').textContent += data.casting_time
+        document.getElementById('spellRange').innerText = data.range
+        document.getElementById('spellCastingTime').innerText = data.casting_time
         // document.getElementById('spellSchool').textContent += data.school
-        document.getElementById('spellRitual').textContent += data.ritual
-        document.getElementById('spellConcentration').textContent += data.concentration
+        // document.getElementById('spellRitual').innerText = data.ritual
+        // document.getElementById('spellConcentration').innerText = data.concentration
         // document.getElementById('spellLevel').textContent += data.level
         // document.getElementById('spellClasses').textContent += data.classes.forEach(obj => {
         //     const li = document.createElement('li')
@@ -48,12 +48,12 @@ function getMonster(){
             .then(data => {
                 console.log(data)
 
-                document.getElementById('monsterName').textContent += data.name
-                document.getElementById('monsterAlign').textContent += data.alignment
-                document.getElementById('monsterWalkSpeed').textContent += data.speed.walk
-                document.getElementById('monsterFlySpeed').textContent += data.speed.fly
-                document.getElementById('monsterSwimSpeed').textContent += data.speed.swim
-                document.getElementById('monsterType').textContent += data.type
+                document.getElementById('monsterName').innerText = data.name
+                document.getElementById('monsterAlign').innerText = data.alignment
+                // document.getElementById('monsterWalkSpeed').innerText = data.speed.walk
+                // document.getElementById('monsterFlySpeed').innerText = data.speed.fly
+                // document.getElementById('monsterSwimSpeed').innerText = data.speed.swim
+                document.getElementById('monsterType').innerText = data.type
                 // document.getElementById('monstorHP').textContent += data.hit_points
                 // document.getElementById('monsterHitDice').innerText += data.hit_die
                 // document.getElementById('monsterXP').innerText += data.xp.toString()
